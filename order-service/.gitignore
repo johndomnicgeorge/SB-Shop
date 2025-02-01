@@ -34,3 +34,4 @@ build/
 
 ###MySQL
 mysql/
+!mysql/init.sql
