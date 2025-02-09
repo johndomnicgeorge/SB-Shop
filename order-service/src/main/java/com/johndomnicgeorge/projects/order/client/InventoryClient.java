@@ -1,11 +1,12 @@
 package com.johndomnicgeorge.projects.order.client;
 
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@FeignClient(value = "inventory", url = "https://localhost:8082")
+@FeignClient(value = "inventory", url = "${inventory.url}")
 public interface InventoryClient {
 
     @RequestMapping(method = RequestMethod.GET, value = "/api/inventory")

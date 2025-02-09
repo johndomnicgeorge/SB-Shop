@@ -1,5 +1,7 @@
 package com.johndomnicgeorge.projects.order;
 
+import com.johndomnicgeorge.projects.order.client.InventoryClient;
+import com.johndomnicgeorge.projects.order.stubs.InventoryClientStub;
 import io.restassured.RestAssured;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.BeforeEach;
@@ -7,11 +9,13 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
+import org.springframework.cloud.contract.wiremock.AutoConfigureWireMock;
 import org.springframework.context.annotation.Import;
 import org.testcontainers.containers.MySQLContainer;
 
 @Import(TestcontainersConfiguration.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@AutoConfigureWireMock(port = 0)
 class OrderServiceApplicationTests {
 
     @ServiceConnection
@@ -32,13 +36,14 @@ class OrderServiceApplicationTests {
 
     @Test
     void shouldPlaceOrder() {
-        /*String requestBody = """
+        String requestBody = """
                 {
                     "skuCode": "iphone_15_8_128_silver",
                     "price": 1000,
                     "quantity": 1
                 }
                 """;
+        InventoryClientStub.stubInventoryCall("iphone_15_8_128_silver", 1);
         RestAssured.given()
                 .contentType("application/json")
                 .body(requestBody)
@@ -47,7 +52,7 @@ class OrderServiceApplicationTests {
                 .then()
                 .statusCode(201)
                 .body(Matchers.equalTo("Order placed successfully"))
-                .log().all();*/
+                .log().all();
     }
 
 }
