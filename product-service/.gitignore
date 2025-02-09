@@ -33,5 +33,5 @@ build/
 .vscode/
 
 ###MySQL
-mysql/
+mysql/*
 !mysql/init.sql
