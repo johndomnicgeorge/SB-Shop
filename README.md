@@ -1,0 +1,1 @@
+A microservices-based demonstration for an online store using Java and Spring Boot. It utilizes Docker containers for data storage in MySQL and MongoDB. Integration tests are run using Docker, Testcontainers, RestAssured and WireMock. Tools used include IntelliJ Idea, Apache Tomcat, Maven and Postman.
