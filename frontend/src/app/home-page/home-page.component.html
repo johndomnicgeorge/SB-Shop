@@ -23,7 +23,7 @@
                                 <span class="font-semibold">{{ product.name }}</span> -
                                 <span class="text-gray-600">${{ product.price }}</span>
                                 <br />
-                                <span> Quantity: <input type="number" #quantityInput />{{ quantity }}</span>
+                                <span> Quantity: <input type="number" #quantityInput /></span>
                                 <br />
                             </div>
                             <button (click)="orderProduct(product, quantityInput.value)" class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 ml-4">Order Now</button>
